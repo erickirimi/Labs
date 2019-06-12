@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -10,14 +11,28 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace Api_gateway
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            // add ocelot configuration
+            string ocelotConfigPath = Path.Combine(env.ContentRootPath, "OcelotConfig");
+            ocelotConfigPath = Path.Combine(ocelotConfigPath, env.EnvironmentName);
+            builder.AddOcelot(ocelotConfigPath, env);
+
+            builder.AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -25,7 +40,8 @@ namespace Api_gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddOcelot(Configuration);
+               
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +57,8 @@ namespace Api_gateway
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseOcelot().Wait();
         }
     }
 }

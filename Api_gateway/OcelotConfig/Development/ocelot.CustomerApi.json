@@ -1,0 +1,28 @@
+{
+  "ReRoutes": [
+    {
+      "Key": "CustomerManagementAPI",
+      "UpstreamPathTemplate": "/api/Test/",
+      "DownstreamPathTemplate": "/api/Test",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5100
+        }
+      ]
+    },
+    {
+      "Key": "CustomerManagementAPI",
+      "UpstreamPathTemplate": "/api/customers/{trailingSegments}",
+      "DownstreamPathTemplate": "/api/customers/{trailingSegments}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5100
+        }
+      ]
+    }
+  ]
+}
