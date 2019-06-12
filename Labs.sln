@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{313F8219-573B-432A-9802-7F2915CEA3C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api_gateway", "Api_gateway\Api_gateway.csproj", "{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api_gateway", "Api_gateway\Api_gateway.csproj", "{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerApi", "CustomerApi\CustomerApi.csproj", "{259B6DAC-F2BC-4319-82CF-9E858F547E04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +21,17 @@ Global
 		{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259B6DAC-F2BC-4319-82CF-9E858F547E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259B6DAC-F2BC-4319-82CF-9E858F547E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259B6DAC-F2BC-4319-82CF-9E858F547E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259B6DAC-F2BC-4319-82CF-9E858F547E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{58F55AD2-C2C5-47AD-9AD7-40BA91EF0842} = {47C897D4-4058-4C3F-8D25-699AFF5153C1}
+		{259B6DAC-F2BC-4319-82CF-9E858F547E04} = {313F8219-573B-432A-9802-7F2915CEA3C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAA27FCE-8768-48F3-B4D0-63B9BC1D48F1}
